@@ -1,14 +1,54 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Title from '../components/Title.astro';
+import Carrousel from '../components/Carrousel.astro';
+import HeroImadev from '../components/HeroImadev.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+
+const cards= [
+  {
+    title: "BarberWeb",
+    description: "Página web para tu barbería.",
+    image: "https://cdn-icons-png.flaticon.com/512/595/595777.png",
+    link: "https://barberwebimanolcab.netlify.app/",
+  },
+  {
+    title: "FoodWeb",
+    description: "Página web para tu negocio de venta de comida.",
+    image: "https://cdn-icons-png.flaticon.com/512/2771/2771406.png",
+    link: "https://webrestaurantimanolcab.netlify.app/",
+  },
+  {
+    title: "StoreWeb",
+    description: "Página web para tu negocio de venta de ropa.",
+    image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    link: "https://webshoesimanolcab.netlify.app/",
+  },
+];
+
+
+
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../public/images/logo_ima_web.svg"/>
+  
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Imadev</title>
 	</head>
-	<body>
-		<slot />
+  <body class="min-h-screen bg-[#03134e]">
+<Navbar/>
+<HeroImadev/>
+<Carrousel  {cards} />
+<Contact/>
+<Footer/>
+
+	
 	</body>
 </html>
 

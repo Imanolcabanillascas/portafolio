@@ -1,0 +1,56 @@
+---
+interface Card {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+interface Props {
+  cards: Card[];
+}
+const { cards } = Astro.props as Props;
+
+---
+
+<section class="relative z-0 pt-24 w-full overflow-hidden py-12">
+  <div class="flex gap-8 animate-cards-slide">
+    {cards.map((card) => (
+      <a href={card.link} target="_blank" rel="noopener noreferrer"
+         class="w-72 h-80 flex flex-col justify-center items-center rounded-2xl
+                bg-white/10 backdrop-blur-md border border-white/20 shadow-lg
+                transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+        <img src={card.image} alt={card.title} class="w-20 h-20 mb-4" />
+        <h3 class="text-white font-semibold text-xl mb-2">{card.title}</h3>
+        <p class="text-white/80 text-center text-sm px-4">{card.description}</p>
+      </a>
+    ))}
+    <!-- Duplicamos para efecto infinito -->
+    {cards.map((card) => (
+      <a href={card.link} target="_blank" rel="noopener noreferrer"
+         class="w-72 h-80 flex flex-col justify-center items-center rounded-2xl
+                bg-white/10 backdrop-blur-md border border-white/20 shadow-lg
+                transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+        <img src={card.image} alt={card.title} class="w-20 h-20 mb-4" />
+        <h3 class="text-white font-semibold text-xl mb-2">{card.title}</h3>
+        <p class="text-white/80 text-center text-sm px-4">{card.description}</p>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+@keyframes cards-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-cards-slide {
+  display: flex;
+  width: max-content;
+  animation: cards-slide 40s linear infinite;
+}
+
+.animate-cards-slide:hover {
+  animation-play-state: paused;
+}
+</style>

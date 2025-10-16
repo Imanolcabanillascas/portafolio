@@ -1,0 +1,22 @@
+---
+const { title = "Bienvenido a Imadev", description = "Creamos soluciones digitales innovadoras que transforman ideas en experiencias.", highlight = "Imadev" } = Astro.props;
+---
+
+<section class="relative flex flex-col items-center justify-center text-center w-full h-screen px-6" id="inicio">
+  <!-- Contenedor con efecto glass -->
+  <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-xl p-10 md:p-16 max-w-3xl">
+    
+    <!-- Título principal -->
+    <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 drop-shadow-lg">
+      {title.replace(highlight, '')}
+      <span class="text-white">{highlight}</span>
+    </h1>
+    
+    <!-- Descripción -->
+    <p class="text-lg md:text-xl text-white/80 mt-6 leading-relaxed">
+      {description}
+    </p>
+
+   
+  </div>
+</section>
