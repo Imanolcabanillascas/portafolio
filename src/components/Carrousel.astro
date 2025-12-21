@@ -5,52 +5,111 @@ interface Card {
   image: string;
   link: string;
 }
+
 interface Props {
   cards: Card[];
 }
-const { cards } = Astro.props as Props;
 
+const { cards } = Astro.props as Props;
 ---
 
-<section class="relative z-0 pt-24 w-full overflow-hidden py-12" id="proyectos">
-  <div class="flex gap-8 animate-cards-slide">
+<section
+  id="proyectos"
+  class="relative z-0 pt-24 w-full py-12"
+>
+  <div
+    class="
+      grid
+      grid-cols-1
+      sm:grid-cols-2
+      lg:grid-cols-2
+      gap-6
+      max-w-5xl
+      mx-auto
+    "
+  >
     {cards.map((card) => (
-      <a href={card.link} target="_blank" rel="noopener noreferrer"
-         class="w-72 h-80 flex flex-col justify-center items-center rounded-2xl
-                bg-white/10 backdrop-blur-md border border-white/20 shadow-lg
-                transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-        <img src={card.image} alt={card.title} class="w-20 h-20 mb-4" />
-        <h3 class="text-white font-semibold text-xl mb-2">{card.title}</h3>
-        <p class="text-white/80 text-center text-sm px-4">{card.description}</p>
-      </a>
-    ))}
-    <!-- Duplicamos para efecto infinito -->
-    {cards.map((card) => (
-      <a href={card.link} target="_blank" rel="noopener noreferrer"
-         class="w-72 h-80 flex flex-col justify-center items-center rounded-2xl
-                bg-white/10 backdrop-blur-md border border-white/20 shadow-lg
-                transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-        <img src={card.image} alt={card.title} class="w-20 h-20 mb-4" />
-        <h3 class="text-white font-semibold text-xl mb-2">{card.title}</h3>
-        <p class="text-white/80 text-center text-sm px-4">{card.description}</p>
+      <a
+        href={card.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="
+          group
+          relative
+          w-full
+          h-60
+          rounded-2xl
+          overflow-hidden
+          bg-[#03134e]
+          shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+          transition-all
+          duration-500
+          hover:-translate-y-1
+        "
+      >
+        <!-- Fondo con patrón de puntos -->
+        <div
+          class="absolute inset-0 opacity-15"
+          style="
+            background-image: radial-gradient(#ffffff33 1px, transparent 1px);
+            background-size: 18px 18px;
+          "
+        ></div>
+
+        <!-- Gradiente de color -->
+        <div
+          class="absolute inset-0 bg-gradient-to-br
+                 from-transparent
+                 via-transparent
+                 to-blue-500/20"
+        ></div>
+
+        <!-- Glow inferior -->
+        <div
+          class="
+            absolute
+            bottom-0
+            left-1/2
+            -translate-x-1/2
+            w-[75%]
+            h-16
+            bg-blue-400/35
+            blur-3xl
+            opacity-60
+            transition
+            group-hover:opacity-100
+          "
+        ></div>
+
+        <!-- Contenido -->
+        <div
+          class="
+            relative
+            z-10
+            h-full
+            flex
+            flex-col
+            justify-center
+            items-center
+            text-center
+            px-6
+          "
+        >
+          <img
+            src={card.image}
+            alt={card.title}
+            class="w-14 h-14 mb-3 drop-shadow-xl"
+          />
+
+          <h3 class="text-white text-lg font-extrabold tracking-wide">
+            {card.title}
+          </h3>
+
+          <p class="text-white/70 text-sm mt-1">
+            {card.description}
+          </p>
+        </div>
       </a>
     ))}
   </div>
 </section>
-
-<style>
-@keyframes cards-slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-cards-slide {
-  display: flex;
-  width: max-content;
-  animation: cards-slide 40s linear infinite;
-}
-
-.animate-cards-slide:hover {
-  animation-play-state: paused;
-}
-</style>
