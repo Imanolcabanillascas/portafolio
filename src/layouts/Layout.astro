@@ -71,12 +71,7 @@ const cards = [
     </div>
 
     <!-- Botón flotante WhatsApp -->
-    
-      href="https://wa.me/51961329036"
-      target="_blank"
-      class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-400 text-white rounded-full p-4 shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110"
-      aria-label="WhatsApp"
-    >
+    <a href="https://wa.me/51961329036" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-400 text-white rounded-full p-4 shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110" aria-label="WhatsApp">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 0a12 12 0 00-9.44 19.2L1.5 24l5.08-1.34A11.92 11.92 0 0012 24a12 12 0 000-24zm6.6 17.2c-.28.8-1.63 1.5-2.27 1.58s-.53.5-3.14-.65c-2.65-1.16-4.32-3.73-4.45-3.9a5.5 5.5 0 01-1.17-2.55c-.12-.58.28-1.26.43-1.44s.38-.32.57-.4a.72.72 0 01.5 0l.4.06c.12 0 .3-.05.47.35.18.43.58 1.44.63 1.54s.1.25 0 .4-.16.25-.3.38c-.15.12-.3.27-.43.4s-.18.27-.08.44a8.3 8.3 0 001.53 1.97 7.28 7.28 0 002.32 1.5c.28.1.45.08.6-.05s.7-.8.9-1.08.4-.25.65-.15 1.68.8 1.97.95.48.22.55.35c.07.12.07.7-.22 1.48z"/>
       </svg>
@@ -93,7 +88,6 @@ const cards = [
     height: 100%;
   }
 
-  /* Contenedor fijo del fondo */
   .spheres-bg {
     position: fixed;
     inset: 0;
@@ -102,7 +96,6 @@ const cards = [
     pointer-events: none;
   }
 
-  /* Esfera base */
   .sphere {
     position: absolute;
     border-radius: 50%;
@@ -118,7 +111,6 @@ const cards = [
     animation: float linear infinite;
   }
 
-  /* Variantes individuales */
   .sphere-1 {
     width: 420px;
     height: 420px;
@@ -169,23 +161,13 @@ const cards = [
     border-color: rgba(120, 170, 255, 0.1);
   }
 
-  /* Animación de flotación suave */
   @keyframes float {
-    0% {
-      transform: translateY(0px) scale(1);
-    }
-    33% {
-      transform: translateY(-18px) scale(1.01);
-    }
-    66% {
-      transform: translateY(10px) scale(0.99);
-    }
-    100% {
-      transform: translateY(0px) scale(1);
-    }
+    0%   { transform: translateY(0px) scale(1); }
+    33%  { transform: translateY(-18px) scale(1.01); }
+    66%  { transform: translateY(10px) scale(0.99); }
+    100% { transform: translateY(0px) scale(1); }
   }
 
-  /* Respetar modo de bajo movimiento */
   @media (prefers-reduced-motion: reduce) {
     .sphere {
       animation: none;
