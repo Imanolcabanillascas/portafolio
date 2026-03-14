@@ -11,105 +11,60 @@ interface Props {
 }
 
 const { cards } = Astro.props as Props;
+
+const stats = [
+  { numero: "+10", label: "Proyectos completados" },
+  { numero: "+5",  label: "Clientes satisfechos" },
+];
 ---
 
-<section
-  id="proyectos"
-  class="relative z-0 pt-24 w-full py-12"
->
-  <div
-    class="
-      grid
-      grid-cols-1
-      sm:grid-cols-2
-      lg:grid-cols-2
-      gap-6
-      max-w-5xl
-      mx-auto
-    "
-  >
-    {cards.map((card) => (
-      <a
-        href={card.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="
-          group
-          relative
-          w-full
-          h-60
-          rounded-2xl
-          overflow-hidden
-          bg-[#03134e]
-          shadow-[0_20px_60px_rgba(0,0,0,0.6)]
-          transition-all
-          duration-500
-          hover:-translate-y-1
-        "
-      >
-        <!-- Fondo con patrón de puntos -->
-        <div
-          class="absolute inset-0 opacity-15"
-          style="
-            background-image: radial-gradient(#ffffff33 1px, transparent 1px);
-            background-size: 18px 18px;
-          "
-        ></div>
+<section id="proyectos" class="relative z-0 pt-24 w-full py-12">
+  <div class="max-w-5xl mx-auto px-4">
 
-        <!-- Gradiente de color -->
-        <div
-          class="absolute inset-0 bg-gradient-to-br
-                 from-transparent
-                 via-transparent
-                 to-blue-500/20"
-        ></div>
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <p class="text-xs tracking-[0.4em] uppercase text-white/30 mb-3">Mi trabajo</p>
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-4">Proyectos</h2>
+      <div class="h-px w-16 bg-white/20 mx-auto mb-10"></div>
 
-        <!-- Glow inferior -->
-        <div
-          class="
-            absolute
-            bottom-0
-            left-1/2
-            -translate-x-1/2
-            w-[75%]
-            h-16
-            bg-blue-400/35
-            blur-3xl
-            opacity-60
-            transition
-            group-hover:opacity-100
-          "
-        ></div>
+      <!-- Stats -->
+      <div class="flex justify-center gap-12">
+        {stats.map(stat => (
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-3xl md:text-4xl font-bold text-white">{stat.numero}</span>
+            <span class="text-xs tracking-widest uppercase text-white/40">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
 
-        <!-- Contenido -->
-        <div
-          class="
-            relative
-            z-10
-            h-full
-            flex
-            flex-col
-            justify-center
-            items-center
-            text-center
-            px-6
-          "
-        >
-          <img
-            src={card.image}
-            alt={card.title}
-            class="w-14 h-14 mb-3 drop-shadow-xl"
-          />
+    <!-- Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      {cards.map((card) => (
+        <a href={card.link} target="_blank" rel="noopener noreferrer" class="group relative w-full h-60 rounded-2xl overflow-hidden bg-[#03134e] shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-all duration-500 hover:-translate-y-1">
+      
+          <!-- Fondo con patrón de puntos -->
+          <div
+            class="absolute inset-0 opacity-15"
+            style="background-image: radial-gradient(#ffffff33 1px, transparent 1px); background-size: 18px 18px;"
+          ></div>
+      
+          <!-- Gradiente de color -->
+          <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-500/20"></div>
+      
+          <!-- Glow inferior -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] h-16 bg-blue-400/35 blur-3xl opacity-60 transition group-hover:opacity-100"></div>
+      
+          <!-- Contenido -->
+          <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <img src={card.image} alt={card.title} class="w-14 h-14 mb-3 drop-shadow-xl" />
+            <h3 class="text-white text-lg font-extrabold tracking-wide">{card.title}</h3>
+            <p class="text-white/70 text-sm mt-1">{card.description}</p>
+          </div>
+      
+        </a>
+      ))}
+    </div>
 
-          <h3 class="text-white text-lg font-extrabold tracking-wide">
-            {card.title}
-          </h3>
-
-          <p class="text-white/70 text-sm mt-1">
-            {card.description}
-          </p>
-        </div>
-      </a>
-    ))}
   </div>
 </section>
